@@ -6,3 +6,6 @@ Nesse módulo, criaremos uma aplicação React utilizando o Vite e aprenderemos 
     - npm create vite@latest
     - npm run dev
     - npm install
+
+# comando para instalar dependencias
+    - npm i phosphor-react
