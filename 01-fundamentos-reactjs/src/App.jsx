@@ -12,7 +12,7 @@ const posts = [
     author: {
       avatarUrl: 'https://avatars.githubusercontent.com/u/625433?s=96&v=4',
       name: 'Lucas Lima',
-      role: 'Developer'
+      role: 'Developer / gamer developer'
     },
     content: [
       {type: 'paragraph', content: 'Fala galera'},
@@ -24,14 +24,14 @@ const posts = [
   {
     id: 2,
     author: {
-      avatarUrl: 'https://avatars.githubusercontent.com/u/625433?s=96&v=4',
+      avatarUrl: 'https://avatars.githubusercontent.com/u/7212526?v=4',
       name: 'Fulano de tal',
       role: 'Gamer develop'
     },
     content: [
       {type: 'paragraph', content: 'Fala galera'},
       {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quis exercitationem expedita voluptate delectus voluptates architecto libero eligendi at ipsa repellendus facere veritatis, deserunt eaque quasi, commodi ratione fuga culpa? '},
-      {type: 'link', content: 'fulano.com/developer'},
+      {type: 'link', content: 'fulano.com/gamer'},
     ],
     publishedAt: new Date('2024-02-21 10:01:00')
   }

@@ -1,31 +1,58 @@
+import { format, formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 import styles from './Post.module.css';
 
-export function Post(){
+export function Post({ author, publishedAt, content }){
+
+    /*
+
+    const publishedDateFormatted = new Intl.DateTimeFormat('pt-BR', {
+        day:'2-digit',
+        month:'long',
+        hour:'2-digit',
+        minute:'2-digit'
+    }).format(publishedAt);
+
+    */
+
+    const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+        locale: ptBR,
+    });
+
+    const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+        locale:ptBR,
+        addSuffix:true,
+    });
+
+
     return (
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <Avatar src='https://avatars.githubusercontent.com/u/625433?s=96&v=4'/>
+                    <Avatar src={author.avatarUrl}/>
                     <div className={styles.authorInfo}>
-                        <strong>Fulano de tal</strong>
-                        <span>Web Develop</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                     </div>
                 </div>
 
-                <time title='20 de Janeiro de 2024' dataTime='20224-02-20 11:56:25'>Públicado há 1h</time>
+                <time title={publishedDateFormatted} dataTime={publishedAt.toISOString()}>
+                    {publishedDateRelativeToNow}
+                </time>
             </header>
 
             <div className={styles.content}>
-                <p>Fala galera</p>
-                <p>Acabei de subir mais um projeto no meu portifa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quis exercitationem expedita voluptate delectus voluptates architecto libero eligendi at ipsa repellendus facere veritatis, deserunt eaque quasi, commodi ratione fuga culpa? </p>
-                <p><a href=''>fulano.com/developer</a></p>
-                <p>
-                    <a href=''>#reactjs</a>
-                    <a href=''>#developer</a>
-                    <a href=''>#gamer</a>
-                </p>
+                {
+                    content.map(line => {
+                        if(line.type === 'paragraph') {
+                            return <p>{line.conten}</p>
+                        } else if (line.type === 'link') {
+                            return <p><a href='#'>{line.conten}</a></p> 
+                        }
+                    })
+                }
             </div>
 
             <form className={styles.commentForm}>
