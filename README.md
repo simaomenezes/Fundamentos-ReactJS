@@ -9,3 +9,4 @@ Nesse módulo, criaremos uma aplicação React utilizando o Vite e aprenderemos 
 
 # comando para instalar dependencias
     - npm i phosphor-react
+    - npm i date-fns
