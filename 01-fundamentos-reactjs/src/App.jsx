@@ -6,6 +6,36 @@ import styles from './App.module.css';
 
 import './global.css'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://avatars.githubusercontent.com/u/625433?s=96&v=4',
+      name: 'Lucas Lima',
+      role: 'Developer'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galera'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quis exercitationem expedita voluptate delectus voluptates architecto libero eligendi at ipsa repellendus facere veritatis, deserunt eaque quasi, commodi ratione fuga culpa? '},
+      {type: 'link', content: 'fulano.com/developer'},
+    ],
+    publishedAt: new Date('2024-02-21 10:01:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://avatars.githubusercontent.com/u/625433?s=96&v=4',
+      name: 'Fulano de tal',
+      role: 'Gamer develop'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galera'},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quis exercitationem expedita voluptate delectus voluptates architecto libero eligendi at ipsa repellendus facere veritatis, deserunt eaque quasi, commodi ratione fuga culpa? '},
+      {type: 'link', content: 'fulano.com/developer'},
+    ],
+    publishedAt: new Date('2024-02-21 10:01:00')
+  }
+];
 
 export function App() {
   return (
@@ -15,14 +45,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar/>
         <main>
-          <Post 
-            author="Simon Peter" 
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus labore, nam reprehenderit officia excepturi mollitia. Dignissimos deserunt minima dolore qui nisi quas assumenda ullam consectetur delectus sapiente. Culpa, sequi deleniti." 
-          />
-          <Post 
-            author="Mathew Peter" 
-            content="Today I learning about reactjs" 
-          />
+          {posts.map(post => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
